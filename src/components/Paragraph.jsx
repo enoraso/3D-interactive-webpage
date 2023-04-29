@@ -1,22 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
 
-    fetch('http://localhost:3000/',{
-        method: 'GET',
-        cache: 'no-cache',
-        credentials: 'same-origin',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-    })
-    .then(response => response.text())
-    .then((data) => {
-      console.log(data);
-      
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
 
 
 
@@ -26,7 +10,7 @@ const Paragraph = () => {
     useEffect(()=> {
         const getPosts = async () => {
             try {
-                const response = await fetch('http://127.0.0.1:3000/');
+                const response = await fetch('http://http://103.45.246.151/dev');
                 const data = await response.json();
                 setPosts(data)
                 console.log(posts)
