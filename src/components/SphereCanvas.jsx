@@ -1,7 +1,7 @@
 import { Canvas } from "@react-three/fiber";
 import React, { Suspense, useEffect, useState, useRef } from "react";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
-import * as THREE from 'three';
+// import * as THREE from 'three';
 import { useLoader, useFrame } from "@react-three/fiber";
 import { Box, Sphere } from "@react-three/drei";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";

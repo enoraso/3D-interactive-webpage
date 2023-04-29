@@ -15,7 +15,7 @@ const Hero = () => {
 
 
         </div>
-        <div>
+        <div className='relative z-40'>
           <h1 className={`${styles.heroHeadText} text-white`}>Interaktīva 3D <span className="text-[#84e889]">mājaslapa</span></h1>
         <p className={`${styles.heroSubText} mt-2 text-white-100`}>
           Izmantojot Three.JS un <br className='sm:block hidden' /> react-three-fiber

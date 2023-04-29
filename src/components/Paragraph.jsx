@@ -1,17 +1,54 @@
-import { styles } from "../styles";
+import { useEffect } from "react";
+import { useState } from "react";
+
+    fetch('http://localhost:3000/',{
+        method: 'GET',
+        cache: 'no-cache',
+        credentials: 'same-origin',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    })
+    .then(response => response.text())
+    .then((data) => {
+      console.log(data);
+      
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+
+
+
+
 const Paragraph = () => {
-    /*TODO
-    Take content from Notion API
-    */
+    const [posts, setPosts ] = useState({})
+    useEffect(()=> {
+        const getPosts = async () => {
+            try {
+                const response = await fetch('http://127.0.0.1:3000/');
+                const data = await response.json();
+                setPosts(data)
+                console.log(posts)
+            } catch(err){
+                console.log(err)
+            }
+        }
+    })
+    
+    
+
 
     return(
         <div className="h-[40vh] px-20 py-10" style={{backgroundColor:'white'}}>
+            <div className= 'max-w-6xl mx-auto'>
             <h2 className='text-4xl font-extrabold text-black'>
-                Šī mājaslapa izmanto Three.js un react-three-fiber.
+                sometext
             </h2>
             <p className="mt-5 text-black text-xl">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sodales tortor rutrum augue venenatis elementum. Nullam ut mi eget risus convallis gravida at gravida erat. Mauris a rutrum risus. Proin mattis mattis nulla, at fringilla ante. Pellentesque sed augue eros. Morbi convallis in mauris nec semper. Nam id quam turpis.
+                some random text here
             </p>
+            </div>
         </div>
     );
  }
