@@ -7,7 +7,7 @@ import { Box, Sphere } from "@react-three/drei";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
 
-const SphereCanvas = () => {
+const SphereCanvas = ({handleToggle}) => {
   const [isMobile, setIsMobile] = useState(false);
 
 
@@ -28,26 +28,26 @@ const SphereCanvas = () => {
 
 
   return (
-    <Canvas style={{height: isMobile? '100vh':'100%', zIndex: '0' }}
+    <Canvas style={{height: isMobile? '100%': '90%', zIndex: '0' }}
       className="cursor-pointer"
       frameloop='demand'
       shadows
       dpr={[1, 2]}
-      camera={{ position: [0, 50, 75], fov: 30 }}
+      camera={{ position: [0, 50, 80], fov: 50 }}
       gl={{ preserveDrawingBuffer: true }}
     >
       {/* <OrbitControls/> */}
-      <ReactCube isMobile={isMobile}/>
-      <ThreeCube isMobile={isMobile} />
+      <ReactCube isMobile={isMobile} handleToggle={handleToggle}/>
+      <ThreeCube isMobile={isMobile} handleToggle={handleToggle}/>
       <Platform isMobile={isMobile}/>
-      <ViteCube isMobile={isMobile} />
+      <ViteCube isMobile={isMobile} handleToggle={handleToggle} />
       <Preload all />
     </Canvas>
   );
 };
 export default SphereCanvas;
 /// react cube ///
-const ReactCube = ({isMobile}) => {
+const ReactCube = ({isMobile , handleToggle}) => {
   const logoObj = useLoader(GLTFLoader, "./logos/React.gltf");
   const sphereRef = useRef();
   const [hoverOn, setHover] = useState(false);
@@ -66,7 +66,7 @@ const ReactCube = ({isMobile}) => {
 
       />
       <mesh
-      onClick={()=>{handleClicks}}
+      onClick={()=>{handleToggle(1)}}
         
       onPointerOver={()=>{setHover(true)}}
       onPointerOut={()=>{setHover(false)}}
@@ -89,7 +89,7 @@ const ReactCube = ({isMobile}) => {
   )
 }
 ///// three cube ////
-const ThreeCube = ({isMobile}) => {
+const ThreeCube = ({isMobile, handleToggle}) => {
   const logoObj = useLoader(GLTFLoader, "./logos/Three.glb");
   const sphereRef = useRef();
   const [hoverOn, setHover] = useState(false);
@@ -108,7 +108,7 @@ const ThreeCube = ({isMobile}) => {
       <pointLight intensity={hoverOn ? 3 : 1} position={[20, 30, 0]} />
       <mesh
       shadows={true}
-      onClick={()=>{handleClicks}}
+      onClick={()=>{handleToggle(2)}}
         
       position={[0,0,0]}
       onPointerOver={()=>{setHover(true)}}
@@ -133,7 +133,7 @@ const ThreeCube = ({isMobile}) => {
   )
 }
 ///// Vite cube ////
-const ViteCube = ({isMobile}) => {
+const ViteCube = ({isMobile , handleToggle}) => {
   const logoObj = useLoader(GLTFLoader, "./logos/Vite.glb");
   const sphereRef = useRef();
   const [hoverOn, setHover] = useState(false);
@@ -152,7 +152,7 @@ const ViteCube = ({isMobile}) => {
 
       />
       <mesh
-      onClick={()=>{handleClicks}}
+      onClick={()=>{handleToggle(3)}}
         
       onPointerOver={()=>{setHover(true)}}
       onPointerOut={()=>{setHover(false)}}
@@ -193,3 +193,6 @@ const Platform = ({ isMobile }) => {
     </group>
   )
 }
+
+
+

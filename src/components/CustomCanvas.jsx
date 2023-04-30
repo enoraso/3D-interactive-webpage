@@ -38,8 +38,8 @@ const CustomCanvas = () => {
   //
 
   return (
-    <Canvas style={{ position: 'absolute', zIndex: '0' }}
-      className="cursor-pointer"
+    <Canvas style={{ position: 'absolute' }}
+      className="cursor-pointer z-10"
       frameloop='demand'
       shadows
       dpr={[1, 2]}
